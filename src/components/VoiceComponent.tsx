@@ -11,6 +11,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/src/components/ui/ca
 import { Mic, MicOff, Volume2, VolumeX } from "lucide-react";
 
 const VoiceChat = () => {
+//states
+  const [haspermission, setHasPermission] = useState(false);
+  const [errormessage, setErrorMessage] = useState("");
+
+  const conversation = useConversation();
+  const { status, isSpeaking } = conversation;
+
   const handleStartConversation = async () => {
     // Add logic to start the conversation
   };
@@ -22,6 +29,20 @@ const VoiceChat = () => {
   const toggleMute = async () => {
     // Add logic to mute the sound
   };
+
+  useEffect (() => {
+     const requestMicPermission = async () => {
+      try {
+        await navigator.mediaDevices.getUserMedia({ audio: true });
+        setHasPermission(true);
+       } catch (error) {
+        setErrorMessage((error as Error).message);
+         console.log("error accesing microphone", error);
+       }
+      };
+
+    requestMicPermission();
+  }, []);
 
   return (
     <Card className="w-full max-w-md mx-auto">
