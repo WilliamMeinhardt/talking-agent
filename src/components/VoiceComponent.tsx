@@ -52,7 +52,11 @@ const VoiceChat = () => {
     <Card className="w-full max-w-md mx-auto">
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
-          Voice Chat
+          <img
+            src="/avatar.png" 
+            alt="Voice Chat Avatar"
+            className="h-12 w-12 rounded-full object-cover"
+          />
           <div className="flex gap-2">
             <Button variant="outline" size="icon" onClick={toggleMute}>
               <VolumeX className="h-4 w-4" />
@@ -61,25 +65,26 @@ const VoiceChat = () => {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="space-y-4">
+        <div className="space-y-">
           <div className="flex justify-center">
-           <Button
+            {status === "connected" ? 
+            ( <Button
               variant={"destructive"}
               onClick={handleEndConversation}
-              className="w-full"
+              className="w-2/4"
             >
-              <Micoff className="mr-2 h-4 w-4" />
+              <MicOff className="mr-2 h-4 w-" />
               end Conversation
-            </Button>
-           
-            <Button
+            </Button>) :
+             (<Button
               onClick={handleStartConversation}
               disabled={false}
-              className="w-full"
+              className="w-2/4"
             >
               <Mic className="mr-2 h-4 w-4" />
               Start Conversation
-            </Button>
+            </Button>) }
+          
           </div>
         </div>
       </CardContent>
