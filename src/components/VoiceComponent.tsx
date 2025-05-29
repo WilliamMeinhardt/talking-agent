@@ -20,6 +20,10 @@ const VoiceChat = () => {
 
   const handleStartConversation = async () => {
     // Add logic to start the conversation
+    const conversationid = await conversation.startSession({
+      agentId: process.env.NEXT_PUBLIC_ELEVENLABS_AGENT_ID!
+    })
+    console.log("started conversation: ", conversationid);
   };
 
   const handleEndConversation = async () => {
@@ -59,6 +63,15 @@ const VoiceChat = () => {
       <CardContent>
         <div className="space-y-4">
           <div className="flex justify-center">
+           <Button
+              variant={"destructive"}
+              onClick={handleEndConversation}
+              className="w-full"
+            >
+              <Micoff className="mr-2 h-4 w-4" />
+              end Conversation
+            </Button>
+           
             <Button
               onClick={handleStartConversation}
               disabled={false}
