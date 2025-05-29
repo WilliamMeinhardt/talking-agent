@@ -11,51 +11,23 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/src/components/ui/ca
 import { Mic, MicOff, Volume2, VolumeX } from "lucide-react";
 
 const VoiceChat = () => {
-  //states
+//states
   const [haspermission, setHasPermission] = useState(false);
   const [errormessage, setErrorMessage] = useState("");
-  const [isListening, setIsListening] = useState(false);
 
   const conversation = useConversation();
   const { status, isSpeaking } = conversation;
-
-  const startListening = () => {
-    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-    recognition.lang = "en-US";
-    recognition.interimResults = false;
-    recognition.maxAlternatives = 1;
-
-    recognition.onresult = async (event) => {
-      const transcript = event.results[0][0].transcript;
-      // Send transcript to your conversation API here
-      await conversation.sendUserInput(transcript);
-    };
-
-    recognition.onerror = (event) => {
-      setErrorMessage(event.error);
-    };
-
-    recognition.onend = () => {
-      setIsListening(false);
-    };
-
-    recognition.start();
-    setIsListening(true);
-  };
 
   const handleStartConversation = async () => {
     // Add logic to start the conversation
     const conversationid = await conversation.startSession({
       agentId: process.env.NEXT_PUBLIC_ELEVENLABS_AGENT_ID!
     })
-    startListening();
     console.log("started conversation: ", conversationid);
   };
 
   const handleEndConversation = async () => {
-    // End the conversation session
-    await conversation.endSession();
-    console.log("ended conversation");
+    // Add logic to end the conversation
   };
 
   const toggleMute = async () => {
