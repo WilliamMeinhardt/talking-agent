@@ -83,8 +83,12 @@ const VoiceChat = () => {
   return (
     <Card className="w-full max-w-md mx-auto">
       <CardHeader>
-        <CardTitle className="flex items-center justify-between">
-          Voice Chat
+        <CardTitle className="flex flex-col items-center justify-center">
+          <img
+            src="/bilde.png"
+            alt="Avatar"
+            className="h-40 w-40 rounded-full object-cover mb-4"
+          />
           <div className="flex gap-2">
             <Button
               variant="outline"

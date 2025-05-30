@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Talking Agent
 
-## Getting Started
+Dette er et Next.js-basert prosjekt som lar deg snakke med en AI-agent via stemmen din. Prosjektet bruker ElevenLabs sin API for samtale og talegenerering, og har støtte for talegjenkjenning direkte i nettleseren.
 
-First, run the development server:
+## Funksjoner
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Start og stopp samtale med AI-agent
+- Snakk til agenten med mikrofonen din
+- Agenten svarer med syntetisk tale
+- Mute/unmute agentens stemme
+- Brukervennlig og responsivt grensesnitt
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Kom i gang
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Installer avhengigheter:**
+   ```bash
+   npm install
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. **Sett opp miljøvariabler:**
+   Opprett en fil `.env.local` i rotmappen og legg inn din ElevenLabs agent-ID:
+   ```
+   NEXT_PUBLIC_ELEVENLABS_AGENT_ID=din_agent_id_her
+   ```
 
-## Learn More
+3. **Start utviklingsserveren:**
+   ```bash
+   npm run dev
+   ```
+   Åpne [http://localhost:3000](http://localhost:3000) i nettleseren.
 
-To learn more about Next.js, take a look at the following resources:
+## Bruk
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Trykk på **Start Conversation** for å begynne å snakke med agenten.
+- Gi tilgang til mikrofon når du blir spurt.
+- Snakk til agenten – svaret kommer som lyd.
+- Trykk på **End Conversation** for å avslutte.
+- Du kan mute/unmute agenten med volumknappen.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Feilsøking
 
-## Deploy on Vercel
+- **Ingen lyd?** Sjekk at du har riktig agent-ID i `.env.local` og at du har gitt tilgang til mikrofon.
+- **Får ikke startet samtale?** Sjekk konsollen for feilmeldinger og at du har internettforbindelse.
+- **Talegjenkjenning virker ikke?** Prøv i Google Chrome, da ikke alle nettlesere støtter Web Speech API.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Avhengigheter
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Next.js](https://nextjs.org/)
+- [@11labs/react](https://www.npmjs.com/package/@11labs/react)
+- [Lucide React](https://lucide.dev/)
+- Web Speech API (innebygd i moderne nettlesere)
+
+## Videre arbeid
+
+- Støtte for flere språk
+- Bedre feilhåndtering og tilbakemeldinger til bruker
+- Mulighet for å velge ulike AI-agenter eller stemmer
+
+---
+
+Laget av [Ditt Navn]  
+Innlandet fylkeskommune, 2025
